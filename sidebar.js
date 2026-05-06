@@ -3813,3 +3813,13 @@ function aplicarFiltroNosCards(termo) {
     });
 }
 // --- FIM DO BRIEFING ---
+
+// Registro do Service Worker para suporte a PWA (Instalação)
+if ('service_worker' in navigator || 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    const swPath = './sw.js';
+    navigator.serviceWorker.register(swPath)
+      .then(reg => console.log('DJEN: Service Worker registrado com sucesso!', reg.scope))
+      .catch(err => console.log('DJEN: Falha ao registrar Service Worker:', err));
+  });
+}
